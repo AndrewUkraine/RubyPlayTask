@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+
+    <title>Clubs</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="text-center">
+                        <h3><i class="glyphicon glyphicon glyphicon-glass" style="font-size:2em;"></i></h3>
+                        <h2 class="text-center">List of Clubs!</h2>
+                        <div class="panel-body">
+
+                            <div th:if="${param.visited}">
+                                <div class="alert alert-info">
+                                    You visited this club!
+                                </div>
+                            </div>
+
+                            <form th:action="@{/club/clubs/{id}}" th:object="${clubs}" method="get">
+
+                                <p class="error-message"
+                                   th:if="${#fields.hasGlobalErrors()}"
+                                   th:each="error : ${#fields.errors('global')}"
+                                   th:text="${error}">Validation error</p>
+
+
+                                <div th:if="${#lists.isEmpty(clubs)}">
+                                    <h1>No one club yet</h1>
+                                </div>
+
+                                <div th:if="${not #lists.isEmpty(clubs)}">
+                                    <h2> Total clubs: <td th:text="${clubs.size()}"></td></h2>
+                                </div>
+
+                                <div class="table table-striped">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                        <tr>
+
+                                            <th scope="col">Name of club:</th>
+                                            <th scope="col">Visit this club:</th>
+                                            <th scope="col">Remove club:</th>
+
+                                        </tr>
+
+                                        <tr th:each="club : ${clubs}">
+
+                                            <td>
+                                                <a th:href="${'club/info/' + club.id}"
+                                                 th:text="${club.getNightClubName()}"></a>
+                                            </td>
+
+                                            <td><a th:href="${'club/clubs/' + club.id}">Visit</a></td>
+                                            <td><a th:href="${'club/clubs/delete/' + club.id}">Remove Club?</a></td>
+                                        </tr>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h3>
+                                                Add new club? <a href="/" th:href="@{/club}">Add</a>
+                                                </h3>
+                                            </div>
+
+                                        </div>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </form>
+
+                            <h3>
+                                User information? <a href="/" th:href="@{'/user/userinfo'}">More information</a>
+                            </h3>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    New user? <a href="/" th:href="@{/user}">Register</a>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                   Logout? <a href="/" th:href="@{/logout}">Logout</a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

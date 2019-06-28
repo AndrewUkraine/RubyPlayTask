@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+
+    <title>Clubs</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="text-center">
+                        <h3><i class="glyphicon glyphicon glyphicon-user" style="font-size:2em;"></i></h3>
+                        <h2 class="text-center">User Info!</h2>
+                        <div class="panel-body">
+
+                            <div th:if="${param.notfound}">
+                                <div class="alert alert-info">
+                                    No one user is found!
+                                </div>
+                            </div>
+
+                            <div th:if="${param.nooneclub}">
+                                <div class="alert alert-info">
+                                   No one club was not visited!
+                                </div>
+                            </div>
+
+                            <h4>Get all night clubs which user has visited already</h4>
+
+                            <form method="get" action="/user/filter">
+                                <input placeholder="Input name of User" class="form-control" type="text" name="filter" required>
+
+                                <div class="form-group" align="right" style="margin-top:10px;">
+                                    <button style="width: 150px" type="submit" class="btn btn-info">Search</button>
+                                </div>
+                            </form>
+
+                            <tr th:each="club : ${usersWithClub}">
+                                <td>
+                                    <p th:text="${club}"></p>
+                                </td>
+                            </tr>
+                        </div>
+
+
+
+                        <div class="panel-body">
+                            <div th:if="${param.notfound2}">
+                                <div class="alert alert-info">
+                                    No one user are found!
+                                </div>
+                            </div>
+
+                            <h4>Get all night clubs which user hasn't visited yet</h4>
+
+                            <form method="get" action="/user/filter2">
+                                <input placeholder="Input name of User" class="form-control" type="text" name="filter" required>
+
+                                <div class="form-group" align="right" style="margin-top:10px;">
+                                    <button style="width: 150px" type="submit" class="btn btn-info">Search</button>
+                                </div>
+
+                            </form>
+
+                            <tr th:each="club : ${notvisitedclubs}">
+                                <td>
+                                    <p th:text="${club}"></p>
+                                </td>
+                            </tr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    New user? <a href="/" th:href="@{/user}">Register</a>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                   Logout? <a href="/" th:href="@{/logout}">Logout</a>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    To list of clubs? <a href="/" th:href="@{/club/clubs}">Clubs</a>
+                </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
