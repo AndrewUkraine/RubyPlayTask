@@ -10,10 +10,10 @@ Not implemented:
 
 
 Start application: 
-https://night-clubs-and-visitors.herokuapp.com/login - login page 
-https://night-clubs-and-visitors.herokuapp.com/user - registration page 
-https://night-clubs-and-visitors.herokuapp.com/club/clubs - list of clubs
-https://night-clubs-and-visitors.herokuapp.com/user/userinfo - info about visites of user 
+- https://night-clubs-and-visitors.herokuapp.com/login - login page 
+- https://night-clubs-and-visitors.herokuapp.com/user - registration page 
+- https://night-clubs-and-visitors.herokuapp.com/club/clubs - list of clubs
+- https://night-clubs-and-visitors.herokuapp.com/user/userinfo - info about visites of user 
 
 Application features: 
 - add new user 
