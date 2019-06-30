@@ -3,3 +3,7 @@ Task for RubyPlay (Night-Clubs And Their Visitors): SpringBoot, Spring Security,
 
 
 Name of DB: night_clubs_and_their_visitors (MySql).
+
+Not implemented: 
+- testing 
+- logging 
