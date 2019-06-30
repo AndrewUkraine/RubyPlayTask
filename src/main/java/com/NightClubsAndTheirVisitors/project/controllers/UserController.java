@@ -81,7 +81,7 @@ public class UserController {
             return  "redirect:/user/userinfo?nooneclub"; }
 
         model.addAttribute("usersWithClub", userRepository.clubsUserVisited(filter));
-        return "/userinfo";
+        return "userinfo";
 
     }
 
@@ -96,7 +96,7 @@ public class UserController {
 
         listClubs.removeAll(listClubsVisitedClub);
         model.addAttribute("notvisitedclubs", listClubs);
-        return "/userinfo";
+        return "userinfo";
 
     }
 }
