@@ -39,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements U
 
         http
                 .authorizeRequests()
-                .antMatchers("/","/user/**", "/static/**", "/login/**", "/login", "https://night-clubs-and-visitors.herokuapp.com/login").permitAll()
+                .antMatchers("/","/user/**", "/static/**", "/login/**", "login", "/webjars/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
